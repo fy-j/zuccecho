@@ -3,7 +3,7 @@ package com.example.zuccecho.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.zuccecho.constant.ResponseConstant;
-import com.example.zuccecho.constant.StuSessionUtil;
+import com.example.zuccecho.constant.SessionUtil;
 import com.example.zuccecho.entry.Student;
 import com.example.zuccecho.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 @RestController
@@ -34,7 +33,7 @@ public class StudentController {
         if(!stu.getPwd().equals(pwd)){
             return ResponseConstant.X_USER_WRONG_PASSWORD;
         }
-        StuSessionUtil.SaveToSession(request.getSession(),stu);
+        SessionUtil.saveToSession(request.getSession(),stu);
         return ResponseConstant.V_USER_LOGIN_SUCCESS;
     }
 
