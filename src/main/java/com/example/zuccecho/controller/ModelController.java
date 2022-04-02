@@ -9,10 +9,7 @@ import com.example.zuccecho.repository.ChoiceQuestionRepository;
 import com.example.zuccecho.repository.ModelRepository;
 import com.example.zuccecho.util.BaseResponsePackageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -50,5 +47,12 @@ public class ModelController {
     public Map<String,Object> getAllModels(){
         List<Model> modelList = modelRepository.findAll();
         return BaseResponsePackageUtil.baseData(modelList);
+    }
+    @RequestMapping(value = "/getById/{modelId}",method = RequestMethod.POST)
+    public Map<String,Object> getModelsById(
+            @PathVariable(value = "modelId") int modelId
+    ){
+        Model m = modelRepository.findById(modelId).orElse(null);
+        return BaseResponsePackageUtil.baseData(m);
     }
 }
