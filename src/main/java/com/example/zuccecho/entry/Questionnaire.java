@@ -19,7 +19,4 @@ public class Questionnaire {
 
     @Column(name = "questions")
     public String questions;
-
-//    @OneToOne(mappedBy = "questionnaire")
-//    private Feedback feedback;
 }
