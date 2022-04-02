@@ -11,8 +11,10 @@ import com.example.zuccecho.util.BaseResponsePackageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -49,4 +51,12 @@ public class QuestionnaireController {
         return BaseResponsePackageUtil.baseData(questionnaire);
     }
 
+    @RequestMapping(value = "showAll",method = RequestMethod.POST)
+    public Map<String,Object> showAllQuestionnaire(
+            HttpServletRequest request
+    ){
+        int teacherId = (int) request.getSession().getAttribute("teacherId");
+        List<Questionnaire> list =questionnaireRepository.showAllQuestionnaire(teacherId);
+        return BaseResponsePackageUtil.baseData(list);
+    }
 }
