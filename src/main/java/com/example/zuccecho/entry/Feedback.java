@@ -9,10 +9,11 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "feedback",schema = "zuccecho",catalog = "")
+@Proxy(lazy = false)
 public class Feedback {
 
     @Id
-    @Column(name = "feedback")
+    @Column(name = "feedbackId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int feedbackId;
 
@@ -23,5 +24,8 @@ public class Feedback {
     public int classId;
 
     @Column(name = "teacherId")
-    private int teacherId;
+    public int teacherId;
+
+    @OneToOne(targetEntity = Questionnaire.class,cascade = CascadeType.ALL)
+    public Questionnaire questionnaire;
 }
