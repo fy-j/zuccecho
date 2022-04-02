@@ -51,12 +51,5 @@ public class QuestionnaireController {
         return BaseResponsePackageUtil.baseData(questionnaire);
     }
 
-    @RequestMapping(value = "showAll",method = RequestMethod.POST)
-    public Map<String,Object> showAllQuestionnaire(
-            HttpServletRequest request
-    ){
-        int teacherId = (int) request.getSession().getAttribute("teacherId");
-        List<Questionnaire> list =questionnaireRepository.showAllQuestionnaire(teacherId);
-        return BaseResponsePackageUtil.baseData(list);
-    }
+
 }
