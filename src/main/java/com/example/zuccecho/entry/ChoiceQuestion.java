@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "choice_question",schema = "zuccecho",catalog = "")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "questionId")
+@Proxy(lazy = false)
 public class ChoiceQuestion {
 
     @Id

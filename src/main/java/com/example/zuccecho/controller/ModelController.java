@@ -8,7 +8,6 @@ import com.example.zuccecho.entry.Model;
 import com.example.zuccecho.repository.ChoiceQuestionRepository;
 import com.example.zuccecho.repository.ModelRepository;
 import com.example.zuccecho.util.BaseResponsePackageUtil;
-import com.sun.xml.internal.ws.client.ResponseContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

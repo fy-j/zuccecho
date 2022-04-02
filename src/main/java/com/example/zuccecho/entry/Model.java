@@ -2,8 +2,10 @@ package com.example.zuccecho.entry;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.Set;
 @Entity
 @Table(name = "model",schema = "zuccecho",catalog = "")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "modelId")
+@Proxy(lazy = false)
 public class Model {
 
     @Id
@@ -32,6 +35,7 @@ public class Model {
                 joinColumns = {@JoinColumn(name = "modelId",referencedColumnName = "modelId")},
                 inverseJoinColumns = {@JoinColumn(name = "questionId",referencedColumnName = "questionId")})
     Set<ChoiceQuestion> choiceQuestions = new HashSet<>();
+
 
     @ManyToMany(targetEntity = SubjectiveQuestion.class,cascade = CascadeType.ALL)
     @JoinTable(name = "subjective",
