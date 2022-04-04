@@ -11,12 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-<<<<<<< Updated upstream
-import java.awt.*;
-import java.util.Arrays;
-=======
-import javax.servlet.http.HttpServletRequest;
->>>>>>> Stashed changes
+
 import java.util.Map;
 
 @RestController
