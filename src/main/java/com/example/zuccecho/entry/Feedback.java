@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -12,7 +13,7 @@ import javax.persistence.*;
 public class Feedback {
 
     @Id
-    @Column(name = "feedback")
+    @Column(name = "feedbackId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int feedbackId;
 
@@ -24,4 +25,7 @@ public class Feedback {
 
     @Column(name = "teacherId")
     private int teacherId;
+
+    @Column(name = "createTime")
+    private Date createTime;
 }

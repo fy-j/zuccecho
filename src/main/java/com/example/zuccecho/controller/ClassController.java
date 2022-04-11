@@ -55,7 +55,7 @@ public class ClassController {
         return BaseResponsePackageUtil.baseData(list);
     }
 
-//    @RequestMapping("/searchByStuId")
+
 
     @RequestMapping("/ModifyById")
     public Map<String,Object> classModify(

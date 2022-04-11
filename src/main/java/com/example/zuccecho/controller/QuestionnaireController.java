@@ -59,4 +59,15 @@ public class QuestionnaireController {
         List<Questionnaire> list =questionnaireRepository.showAllQuestionnaire(teacherId);
         return BaseResponsePackageUtil.baseData(list);
     }
+
+
+    @RequestMapping(value = "modify/{id}",method = RequestMethod.POST)
+    public Map<String,Object> modifyQuestionnaire(
+            @RequestBody JSONObject p,
+            @PathVariable(name = "id") int id
+    ){
+        String questions = p.getString("questions");
+        questionnaireRepository.updateQuestionnaireById(id,questions);
+        return ResponseConstant.V_UPDATE_SUCCESS;
+    }
 }

@@ -28,4 +28,7 @@ public class SessionUtil {
         return ((Teacher)session.getAttribute("teacherLogin")).getTeacherId();
     }
 
+    public static int getStudentIdFromSession(HttpSession session){
+        return ((Student)session.getAttribute("studentLogin")).getStuId();
+    }
 }
