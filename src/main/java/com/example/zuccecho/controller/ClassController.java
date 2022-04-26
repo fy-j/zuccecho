@@ -3,9 +3,8 @@ package com.example.zuccecho.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.zuccecho.constant.ResponseConstant;
 import com.example.zuccecho.constant.SessionUtil;
-import com.example.zuccecho.entry.Teacher;
-import com.example.zuccecho.entry.ZuccClass;
-import com.example.zuccecho.repository.ClassRepository;
+import com.example.zuccecho.entity.Clazz;
+import com.example.zuccecho.repository.ClazzRepository;
 import com.example.zuccecho.util.BaseResponsePackageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +20,7 @@ import java.util.Map;
 @RequestMapping(value = "/class")
 public class ClassController {
     @Autowired
-    public ClassRepository classRepository;
+    public ClazzRepository clazzRepository;
 
     @RequestMapping("/add")
     public Map<String,Object> classAdd(
@@ -30,11 +29,10 @@ public class ClassController {
         Integer teacherId = p.getInteger("tea_teacher_Id");
         String className = p.getString("class_Name");
         Date createTime = p.getDate("create_Time");
-        ZuccClass zuccClass = new ZuccClass();
-        zuccClass.setTeacherId(teacherId);
+        Clazz zuccClass = new Clazz();
         zuccClass.setClassName(className);
-        zuccClass.setCreateTime(createTime);
-        classRepository.save(zuccClass);
+        zuccClass.setCreateTime((java.sql.Date) createTime);
+        clazzRepository.save(zuccClass);
         return ResponseConstant.V_ADD_SUCCESS;
     }
 
@@ -51,8 +49,7 @@ public class ClassController {
             HttpServletRequest request
     ){
         int teacherId  = SessionUtil.getTeacherIdFromSession(request.getSession());
-        List<ZuccClass> list = classRepository.findByTeacherId(teacherId);
-        return BaseResponsePackageUtil.baseData(list);
+        return null;
     }
 
 
@@ -63,7 +60,6 @@ public class ClassController {
     ){
         String className = p.getString("class_Name");
         Integer classId = p.getInteger("class_Id");
-        classRepository.modifyById(classId,className);
         return ResponseConstant.V_UPDATE_SUCCESS;
     }
 }

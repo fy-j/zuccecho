@@ -4,7 +4,7 @@ package com.example.zuccecho.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.zuccecho.constant.ResponseConstant;
 import com.example.zuccecho.constant.SessionUtil;
-import com.example.zuccecho.entry.Teacher;
+import com.example.zuccecho.entity.Teacher;
 import com.example.zuccecho.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

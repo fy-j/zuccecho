@@ -1,7 +1,8 @@
 package com.example.zuccecho.constant;
 
-import com.example.zuccecho.entry.Student;
-import com.example.zuccecho.entry.Teacher;
+import com.example.zuccecho.entity.Student;
+import com.example.zuccecho.entity.Teacher;
+import com.example.zuccecho.form.StudentDto;
 import io.swagger.models.auth.In;
 
 import javax.servlet.http.HttpSession;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpSession;
 public class SessionUtil {
 
     public static void saveToSession(HttpSession session, Student student){
-        session.setAttribute("studentLogin",student);
+        session.setAttribute("studentLogin",new StudentDto(student.getStuId(),student.getName(), student.getPhone(),student.getEmail()));
     }
 
     public static void saveTeacherToSession(HttpSession session, Teacher teacher){
@@ -24,11 +25,17 @@ public class SessionUtil {
         session.removeAttribute("teacherLogin");
     }
 
-    public static int getTeacherIdFromSession(HttpSession session){
+    public static Integer getTeacherIdFromSession(HttpSession session){
+        if(session.getAttribute("teacherLogin")==null) return null;
         return ((Teacher)session.getAttribute("teacherLogin")).getTeacherId();
     }
 
-    public static int getStudentIdFromSession(HttpSession session){
-        return ((Student)session.getAttribute("studentLogin")).getStuId();
+    public static Integer getStudentIdFromSession(HttpSession session){
+        if(session.getAttribute("studentLogin")==null) return null;
+        return ((StudentDto)session.getAttribute("studentLogin")).getStuId();
+    }
+
+    public static StudentDto getStuDtoFromSession(HttpSession session){
+        return (StudentDto) session.getAttribute("studentLogin");
     }
 }

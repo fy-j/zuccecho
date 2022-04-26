@@ -1,9 +1,8 @@
 package com.example.zuccecho.repository;
 
-import com.example.zuccecho.entity.Model;
+import com.example.zuccecho.entity.MdOptions;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface ModelRepository extends JpaRepository<Model,Integer>, JpaSpecificationExecutor<Model> {
-
+public interface MdOptionsRepository extends JpaRepository<MdOptions,Integer>, JpaSpecificationExecutor<MdOptions> {
 }
